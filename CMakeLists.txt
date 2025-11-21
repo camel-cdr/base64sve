@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 project(base64sve VERSION 0.1 LANGUAGES C)
 
-ADD_COMPILE_OPTIONS(-march=armv8.4-a+sve -O3 -static -Wall -g)
+ADD_COMPILE_OPTIONS(-march=armv8.4-a+sve+sve2-bitperm -O3 -static -Wall -g)
 
 # Add include directories
 include_directories(${PROJECT_SOURCE_DIR}/lib/include)

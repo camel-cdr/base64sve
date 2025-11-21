@@ -34,56 +34,21 @@ int main(void)
 
     const size_t encoded_length = Base64encode_len(N);
     char output[encoded_length];
+    char output2[encoded_length];
 
-    // printArray(data, N);
-    base64sve_encode_x2(data, output, N);
-    // printArray(output, N);
+    base64sve_encode_bdep(data, output, N);
+    base64sve_encode_bdep(data, output2, N);
 
-    // Erwartetes Ergebnis
-    // printf("SGFsbG9EYXNJc3RlaW5UZXN0d2llZ2VodGVzZGlyQVZDQg==\n");
 
     for (int i = 0; i < encoded_length; i++)
     {
         printf("%c", output[i]);
     }
     printf("\n\n");
-
-    char base64_data[48] = "SGFsbG9EYXNJc3RlaW5UZXN0d2llZ2VodGVzZGlyQVZDQg==";
-    char result[48];
-    size_t decoded_length = 0;
-
-    base64sve_decode(base64_data, result, 48, &decoded_length);
-
-    for (int i = 0; i < 48; i++)
+    for (int i = 0; i < encoded_length; i++)
     {
-        printf("0x%02X ", base64_data[i]);
+        printf("%c", output[i]);
     }
-    printf("\n");
-
-    for (int i = 0; i < decoded_length; i++)
-    {
-        printf("%c", result[i]);
-    }
-    printf("\n");
-
-    // void testTuple(uint64_t * data, uint64_t * output, size_t length);
-
-    uint64_t data2[] = {1, 2, 3, 4};
-    uint64_t out[4];
-
-    testTuple(data2, out, 4);
-
-    for (int i = 0; i < 4; i++)
-    {
-        printf("%" PRId64" ", data2[i]);
-    }
-    printf("\n");
-
-    for (int i = 0; i < 4; i++)
-    {
-        printf("%" PRId64" ", out[i]);
-    }
-    printf("\n");
-
+    printf("\n\n");
     return 0;
 }
